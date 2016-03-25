@@ -6,6 +6,24 @@
 #= require action_cable
 #= require_self
 #= require_tree ./channels
-#
-# @App ||= {}
-# App.cable = ActionCable.createConsumer()
+
+@App ||= {}
+
+protocol = if location.protocol.match(/^https/)
+  'wss'
+else
+  'ws'
+
+App.cable = ActionCable.createConsumer("#{protocol}:#{location.host}/cable")
+
+channel = App.cable.subscriptions.create "EventsChannel",
+  connected: ->
+    $('.connecting').hide()
+    $('.connected').show()
+
+  disconnected: ->
+    $('.connecting').show().text('Oops, cable gone away, trying to reconnect')
+    $('.connected').hide()
+
+  received: (data) ->
+    $('#connected-count').text(data.count)
