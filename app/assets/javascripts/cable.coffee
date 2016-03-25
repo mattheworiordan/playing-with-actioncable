@@ -27,3 +27,19 @@ channel = App.cable.subscriptions.create "EventsChannel",
 
   received: (data) ->
     $('#connected-count').text(data.count)
+    console.log(data)
+    $('ul#requests').append("<li>Connection request for #{data.count} took #{Math.round(new Date().getTime() - data.broadcastAt)} ms")
+
+  requestCount: (data) ->
+    @perform("request_count")
+
+  streamLiveCount: (data) ->
+    @perform("stream_live_count")
+
+$(document).ready(->
+  $('button#request-current-count').on 'click', ->
+    channel.requestCount()
+  $('button#live-current-count').on 'click', ->
+    channel.streamLiveCount()
+    $('#live-current-count').hide()
+)

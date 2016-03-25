@@ -3,7 +3,10 @@
   "description": "Realtime messaging infrastructure",
   "version": "0.0.1",
   "dependencies": {
-    "es6-actioncable": "^0.0.2"
+    "ably-js": "https://github.com/ably/ably-js.git",
+    "async": "^1.5",
+    "es6-actioncable": "https://github.com/mattheworiordan/es6-actioncable#node-js-support",
+    "prompt": "^1.0.0"
   },
   "engines": {
     "node": "5.8.0"
