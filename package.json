@@ -1,0 +1,16 @@
+{
+  "name": "playing-with-action-cable",
+  "description": "Realtime messaging infrastructure",
+  "version": "0.0.1",
+  "dependencies": {
+    "es6-actioncable": "^0.0.2"
+  },
+  "engines": {
+    "node": "5.8.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:mattheworiordan/playing-with-action-cable.git"
+  },
+  "devDependencies": { }
+}
